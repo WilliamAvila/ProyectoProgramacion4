@@ -1,0 +1,148 @@
+﻿
+<div ng-init="getGames()">
+    <table class="table table-hover">
+        <tr class="row lead">
+            <th>Id</th>
+            <th>IdLeague</th>
+            <th>Local</th>
+            <th>Visitor</th>
+            <th>Final Score</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr class="row" ng-repeat="game in availableGames">
+
+        <td>  {{game.Id}}  </td>
+        <td> {{game.IdLeague}} </td>
+        <td> {{game.Local}} </td>
+        <td> {{game.Visitor}} </td>
+        <td> {{game.Score}} </td>
+        <td>
+            <a href="" ng-click="editMode(game)"><i class=" glyphicon glyphicon-pencil"></i></a>
+        </td>
+        <td><a href="" ng-click="deleteGame(game.Id)"><i class="glyphicon glyphicon-remove"></i></a></td>
+    </table>
+
+
+</div>
+
+<div class="row" ng-hide="isEditing">
+    <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="addNewGame()">
+        <h2 class="text-center">Add New Game</h2>
+        <div class="form-box">
+            <div class="form-group">
+
+                <input ng-model="NewGame.Local" type="text" class="form-control" placeholder="Local Team" required autofocus />
+
+                <input ng-model="NewGame.Visitor" type="text" class="form-control" placeholder="Visitor Team" required autofocus />
+
+                <input ng-model="NewGame.IdLeague" type="text" class="form-control" placeholder="Id League" required autofocus />
+
+
+                <!--<input ng-model="LeagueType" type="text" class="form-control" placeholder="Id" required autofocus />
+
+                <input ng-model="LeagueType" type="text" class="form-control" placeholder="Id" required autofocus />
+                <input ng-model="ImgLeague" type="text" class="form-control" placeholder="Img URL" required autofocus />-->
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" >Add</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" ng-show="isEditing">
+    <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="editGame()">
+        <h2 class="text-center">Edit Game</h2>
+        <div class="form-box">
+            <div class="form-group">
+                <input ng-model="GametoEdit.Local" type="text" class="form-control" placeholder="Local Team" required autofocus />
+                <input ng-model="GametoEdit.Visitor" type="text" class="form-control" placeholder="Visitor Team" required autofocus />
+                <input ng-model="GametoEdit.Score" type="text" class="form-control" placeholder="Final Score" required autofocus />
+
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<!---<h1 >Current Teams for this League</h1>    
+<div ng-controller="LeagueCtrl">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Team Name
+                </th>
+                <th style="width: 50px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="team in FilterTeams">
+                <td>{{team.nombre}}</td>
+                <td>{{team.id_liga}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h1>Current Matches</h1>    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th> Local Team</th>
+                <th> Visiting Team</th>
+                <th>Match Date</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th style="width: 50px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="match in FilterTeams">
+                <td>{{match.localTeam}}</td>
+                <td>{{match.visitor}}</td>
+                <td>{{match.date}}</td>
+                <td><a href="" ng-click="editMatch(match.localTeam,match.visitor)"><i class=" glyphicon glyphicon-pencil"></i></a></td>
+                <td> <a href="" ng-click="deleteMatch(match.localTeam,match.visitor)"><i class="glyphicon glyphicon-remove"></i></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row" ng-hide="isEditing">
+        <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="addNewMatch()">
+            <h2 class="text-center">New Match</h2>
+            <div class="form-box">
+                <div class="form-group">
+                    <input ng-model="LocalTeamName" type="text" class="form-control" placeholder="Team Name" required />
+                    <input ng-model="VisitorTeamName" type="text" class="form-control" placeholder="Visitor Name" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(LocalTeamName && VisitorTeamName)" disabled>Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row" ng-show="isEditing">
+        <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="finishEditing()">
+            <h2 class="text-center">Edit Match</h2>
+            <div class="form-box">
+                <div class="form-group">
+                    <input ng-model="LocalNewTeamName" type="text" class="form-control" placeholder="Local Team" required />
+                    <input ng-model="VisitingTeamName" type="text" class="form-control" placeholder="Visiting Team" required />
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Save</button>
+                    <button class="btn btn-primary btn-block" type="button" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <a href="/leagues" class="btn btn-primary navbar-btn">Go Back </a>
+    -->

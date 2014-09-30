@@ -1,0 +1,57 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <a class="navbar-brand" href="./HomeUser">Home</a>
+    <a class="navbar-brand" href="./MyLeagues">My Leagues</a>
+    <a class="navbar-brand" href="./SearchLeagues">Search Leagues</a>
+    <a class="navbar-brand" href="./MakeAPrediction">Make a Prediction</a>
+    <a class="navbar-brand navbar-right" href="./../">Exit</a>
+</nav>
+<br/>
+<br/>
+
+
+
+<br/>
+<br/>
+<h1>Search for Leagues</h1>
+
+<div ng-init="loadLeagues()">
+    <table class="table table-hover">
+        <tr class="row lead">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Points</th>
+
+            <th>Subscribed</th>
+        </tr>
+        <tr class="row" ng-repeat="availableLeague in availableLeagues">
+
+            <td>  {{availableLeague.Id}}  </td>
+            <td><a class=" btn-link" href="/league/{{availableLeague.Id}}"> {{availableLeague.Name}} </a></td>
+            <td> 0</td>
+            <td>
+                <button ng-click="SubscribeLeague(league.name)" class=" {{league.subscribed}}">Subscribe </button>
+            </td></table>
+
+
+</div>
+<br/>
+<br/>>
+
+<h1>My Leagues</h1>
+<table class="table table-hover">
+    <tr class="row lead">
+        <th>..</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Accerts</th>
+        <th>Points</th>
+    </tr>
+    <tr ng-repeat="league in misLigas" class="row">
+        <td><img ng-src="{{league.leagueImg}}" style="height:30px;width:30px" /></td>
+        <td> {{league.name}}  </td>
+        <td>{{league.type}}</td>
+        <td>{{league.accerts}}</td>
+        <td>{{league.points}}</td>
+    </tr>
+
+</table>

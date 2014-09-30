@@ -1,0 +1,68 @@
+﻿<script>
+    
+    var id = document.URL[document.URL.length - 1];
+    
+</script>
+
+<div class="btn-toolbar">
+</div>
+<div class="panel-body" ng-init="loadTeams()">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <a href="" ng-click="ordenarPor('nombre')">
+                        Name
+                    </a>
+                    <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-nombre')"></span>
+                </th>
+                <th style="width: 50px;">Id League</th>
+
+                <th style="width: 50px;">Edit</th>
+                <th style="width: 50px;">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody >
+            <tr ng-repeat="team in AllTeams" ng-if="team.IdLeague==idMyLeague2">
+                
+                    <td>{{team.Name}}</td>
+                    <td>{{team.IdLeague}}</td>
+
+                    <td> <a href="" ng-click="editMode(team)"><i class=" glyphicon glyphicon-pencil"></i></a></td>
+                    <td><a href="" ng-click="deleteTeam(team.Id)"><i class="glyphicon glyphicon-remove"></i></a></td>
+              
+            </tr>
+        </tbody>
+    </table>
+    <div class="row" ng-hide="isEditing">
+        <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="addNewTeam()">
+            <h2 class="text-center">New Team</h2>
+            <div class="form-box">
+                <div class="form-group">
+                    <input ng-model="NewTeam.Name" type="text" class="form-control" placeholder="Team Name" required />
+
+                    <input ng-model="NewTeam.IdLeague" type="text" class="form-control" placeholder="Team ID" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(NewTeam.Name && NewTeam.IdLeague )" disabled>Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row" ng-show="isEditing">
+        <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="editTeam()">
+            <h2 class="text-center">Edit Team</h2>
+            <div class="form-box">
+                <div class="form-group">
+                    <input ng-model="TeamtoEdit.Name" type="text" class="form-control" placeholder="Team Name" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Save</button>
+                    <button class="btn btn-primary btn-block" type="button" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <a href="/leagues" class="btn btn-primary navbar-btn">Go Back </a>
+</div>
